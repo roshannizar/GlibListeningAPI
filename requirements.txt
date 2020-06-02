@@ -3,4 +3,3 @@ textblob
 flask
 gunicorn
 python-Levenshtein
-requests
