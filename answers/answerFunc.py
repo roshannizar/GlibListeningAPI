@@ -1,4 +1,4 @@
-from answers.getAnswer import getResults, answerPredictor
+from getAnswer import getResults, answerPredictor
 
 
 def answerFunc(answerArray):
