@@ -2,7 +2,7 @@ import pandas as pd
 from Levenshtein import ratio
 from flask import jsonify
 
-data = pd.read_csv("../dataset/data.csv", encoding='utf-8')
+data = pd.read_csv("https://github.com/roshannizar/GlibListeningAPI/blob/master/dataset/data.csv", encoding='utf-8')
 
 
 def getResults(questions, fn):
