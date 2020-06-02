@@ -2,3 +2,4 @@ pandas
 textblob
 flask
 gunicorn
+python-Levenshtein
