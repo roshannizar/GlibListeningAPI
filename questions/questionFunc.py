@@ -2,12 +2,11 @@ from flask import jsonify
 from textblob import TextBlob
 
 from questions.removeWord import removeWord
-
+number = 0
 
 def questionFunc(ww2):
     ww2b = TextBlob(ww2)
     sposs = {}
-    number=0;
     questionArray = []
 
     for sentence in ww2b.sentences:
