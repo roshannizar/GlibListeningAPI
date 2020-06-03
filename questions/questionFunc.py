@@ -2,12 +2,13 @@ from flask import jsonify
 from textblob import TextBlob
 
 from questions.removeWord import removeWord
-number = 0
+
 
 def questionFunc(ww2):
     ww2b = TextBlob(ww2)
     sposs = {}
     questionArray = []
+    number = 0
 
     for sentence in ww2b.sentences:
 
@@ -29,8 +30,9 @@ def questionFunc(ww2):
             print("Founded none for ")
             print(sentence)
         else:
+            number = number + 1
             question = {
-                "number":number+1,
+                "number": number,
                 "question": replaced,
                 "answer": word
             }
