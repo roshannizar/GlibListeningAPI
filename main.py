@@ -24,9 +24,10 @@ def main():
 @app.route('/answer', methods=['POST'])
 def answer():
     try:
-        arrayAnswer = eval(request.form.get("data"))
-        questionArray = eval(request.form.get("questions"))
-        return answerFunc(arrayAnswer, questionArray)
+        arrayAnswerJson = request.json
+        # arrayAnswer = eval(request.form.get("data"))
+        # questionArray = eval(request.form.get("questions"))
+        return answerFunc(arrayAnswerJson)
     except Exception as error:
         response = jsonify(error)
         response.status_code = 500

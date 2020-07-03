@@ -5,8 +5,14 @@ from flask import jsonify
 data = pd.read_csv('data.csv')
 
 
-def getResults(answerArray, questionArray, fn):
+def getResults(answerArray, fn):
     answerScoreArray = []
+    answerData=[]
+    questionData = []
+
+    for answer in answerArray["listening"]:
+        answerData.append(answer["answer"])
+        questionData.append(answer["question"])
 
     def getResult(a, q):
         answer, score, prediction, status = fn(a, q)
@@ -17,7 +23,7 @@ def getResults(answerArray, questionArray, fn):
         answerScoreArray.append(answerJson)
         return [q, prediction, answer, score, status]
 
-    pd.DataFrame(list(map(getResult, answerArray, questionArray)), columns=["Answer", "Prediction", "Exact Answer", "Score", "Status"])
+    pd.DataFrame(list(map(getResult, answerData,questionData)), columns=["Answer", "Prediction", "Exact Answer", "Score", "Status"])
 
     response = jsonify(answerScoreArray)
     response.status_code = 200
