@@ -25,6 +25,7 @@ def main():
 def answer():
     try:
         arrayAnswerJson = request.json
+        print(arrayAnswerJson)
         # arrayAnswer = eval(request.form.get("data"))
         # questionArray = eval(request.form.get("questions"))
         return answerFunc(arrayAnswerJson)
