@@ -1,5 +1,6 @@
 from flask import jsonify
 from textblob import TextBlob
+import csv
 
 from questions.removeWord import removeWord
 
@@ -27,7 +28,7 @@ def questionFunc(ww2):
         poss = sposs[sentence]
         (word, sentence, replaced) = removeWord(sentence, poss)
         if replaced is None:
-            print("Founded none for ")
+            print("Couldn't find any sentence")
             print(sentence)
         else:
             number = number + 1
@@ -37,6 +38,11 @@ def questionFunc(ww2):
                 "answer": word
             }
             questionArray.append(question)
+
+    with open('data.csv', mode="w") as dataset:
+        for sentence in questionArray:
+            dataset_writer = csv.writer(dataset, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+            dataset_writer.writerow([sentence['question'], sentence['answer']])
     response = jsonify(questionArray)
     response.status_code = 200
     return response

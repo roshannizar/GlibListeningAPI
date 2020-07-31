@@ -14,9 +14,6 @@ def getResults(answerArray, fn):
         answerData.append(answer["answer"])
         questionData.append(answer["question"])
 
-    print(answerData)
-    print(questionData)
-
     def getResult(a, q):
         answer, score, prediction, status = fn(a, q)
         answerJson = {

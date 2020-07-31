@@ -14,7 +14,6 @@ def main():
         data = request.form.get("description")
 
         return questionFunc.questionFunc(data)
-        # aqg.DisNormal(questionList)
     except Exception as error:
         response = jsonify(error)
         response.status_code = 500
@@ -25,9 +24,6 @@ def main():
 def answer():
     try:
         arrayAnswerJson = request.json
-        print(arrayAnswerJson)
-        # arrayAnswer = eval(request.form.get("data"))
-        # questionArray = eval(request.form.get("questions"))
         return answerFunc(arrayAnswerJson)
     except Exception as error:
         response = jsonify(error)
