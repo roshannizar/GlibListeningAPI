@@ -40,7 +40,9 @@ def answerPredictor(a, q):
     for idx, row in data.iterrows():
         if q == row["Question"]:
             score = ratio(row["Answer"], a)
+            status = "Correct"
             if score >= 0.9:
+                status = "Correct"
                 return row["Answer"], score, row["Question"], status
             elif score > max_score:
                 max_score = score

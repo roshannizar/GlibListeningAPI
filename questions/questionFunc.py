@@ -6,6 +6,7 @@ from questions.removeWord import removeWord
 
 
 def questionFunc(ww2):
+    col_names = ["Question", "Answer"]
     ww2b = TextBlob(ww2)
     sposs = {}
     questionArray = []
@@ -40,8 +41,10 @@ def questionFunc(ww2):
             questionArray.append(question)
 
     with open('data.csv', mode="w") as dataset:
+        writer = csv.DictWriter(dataset, fieldnames=col_names)
+        writer.writeheader()
         for sentence in questionArray:
-            dataset_writer = csv.writer(dataset, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+            dataset_writer = csv.writer(dataset, delimiter=',', quoting=csv.QUOTE_NONE, lineterminator='\n')
             dataset_writer.writerow([sentence['question'], sentence['answer']])
     response = jsonify(questionArray)
     response.status_code = 200
