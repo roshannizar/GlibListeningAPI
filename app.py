@@ -15,7 +15,7 @@ def main():
 
         return questionFunc.questionFunc(data)
     except Exception as error:
-        response = jsonify(error)
+        response = jsonify({'error': error})
         response.status_code = 500
         return response
 
