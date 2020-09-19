@@ -1,4 +1,5 @@
 from flask import jsonify
+import textblob
 from textblob import TextBlob
 import csv
 
