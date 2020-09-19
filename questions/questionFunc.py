@@ -1,26 +1,26 @@
 from flask import jsonify
-import textblob
-from textblob import TextBlob
 import csv
+import nltk
 
 from questions.removeWord import removeWord
 
 
 def questionFunc(ww2):
     col_names = ["Question", "Answer"]
-    ww2b = TextBlob(ww2)
+    ww2b = nltk.sent_tokenize(ww2)
     sposs = {}
     questionArray = []
     number = 0
 
-    for sentence in ww2b.sentences:
+    for sentence in ww2b:
 
         # We are going to prepare the dictionary of parts-of-speech as the key and value is a list of words:
         # {part-of-speech: [word1, word2]}
         # We are basically grouping the words based on the parts-of-speech
         poss = {}
-        sposs[sentence.string] = poss;
-        for t in sentence.tags:
+        sposs[sentence] = poss
+        tokenizer = nltk.word_tokenize(sentence)
+        for t in nltk.pos_tag(tokenizer):
             tag = t[1]
             if tag not in poss:
                 poss[tag] = []
