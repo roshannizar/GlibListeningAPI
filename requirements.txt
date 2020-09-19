@@ -1,6 +1,6 @@
 pandas
-textblob
 nltk
 flask
 gunicorn
 python-Levenshtein
+textblob
