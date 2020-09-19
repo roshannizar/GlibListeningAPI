@@ -1,7 +1,7 @@
 from flask import jsonify
 import csv
 import nltk
-
+nltk.download('punkt')
 from questions.removeWord import removeWord
 
 
