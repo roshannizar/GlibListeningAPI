@@ -1,7 +1,8 @@
 from flask import jsonify
 import csv
 import nltk
-
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
 from questions.removeWord import removeWord
 
 
