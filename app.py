@@ -1,6 +1,6 @@
 from questions import questionFunc
 import flask
-from flask import request, jsonify
+from flask import request, jsonify, render_template
 
 from answers.answerFunc import answerFunc
 
@@ -32,9 +32,9 @@ def answer():
         return response
 
 
-@app.route("/", methods=["GET"])
-def mainPage():
-    return "<h1>Welcome to glib listening web service</h2>"
+@app.route('/', methods=['GET'])
+def swagger():
+    return render_template('swaggerui.html')
 
 
 # Call Main Function

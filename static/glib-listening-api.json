@@ -1,0 +1,43 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "GLIB Listening API",
+    "description": "GLIB API"
+  },
+  "paths": {
+    "/api": {
+      "post": {
+        "tags": [
+          "questions"
+        ],
+        "description": "Returns generated questions",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "description",
+            "required": true,
+            "description": "description",
+            "schema": {
+              "type": "string",
+              "example": "description"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "generated questions with blanks",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "example": "how is the weather at _______ place"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
