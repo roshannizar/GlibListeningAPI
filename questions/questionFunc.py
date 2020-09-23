@@ -1,6 +1,7 @@
 from flask import jsonify
 import csv
 import nltk
+
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
 from questions.removeWord import removeWord
@@ -14,10 +15,9 @@ def questionFunc(ww2):
     number = 0
 
     for sentence in ww2b:
-
-        # We are going to prepare the dictionary of parts-of-speech as the key and value is a list of words:
+        # going to prepare the dictionary of parts-of-speech as the key and value is a list of words:
         # {part-of-speech: [word1, word2]}
-        # We are basically grouping the words based on the parts-of-speech
+        # basically grouping the words based on the parts-of-speech
         poss = {}
         sposs[sentence] = poss
         tokenizer = nltk.word_tokenize(sentence)
@@ -35,6 +35,7 @@ def questionFunc(ww2):
             print(sentence)
         else:
             number = number + 1
+            replaced = replaced.strip(".")
             question = {
                 "number": number,
                 "question": replaced,

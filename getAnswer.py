@@ -17,11 +17,11 @@ def getResults(answerArray, fn):
     def getResult(a, q):
         answer, score, prediction, status = fn(a, q)
         answerJson = {
-            "score": score,
+            "score": "{0:.2f}".format(score),
             "status": status
         }
         answerScoreArray.append(answerJson)
-        return [q, prediction, answer, score, status]
+        return [q, prediction, answer, "{0:.2f}".format(score), status]
 
     pd.DataFrame(list(map(getResult, answerData, questionData)),
                  columns=["Answer", "Prediction", "Exact Answer", "Score", "Status"])
@@ -38,17 +38,18 @@ def answerPredictor(a, q):
     prediction = ""
     status = "Correct"
     for idx, row in data.iterrows():
-        if q == row["Question"]:
+        question = row["Question"].strip(".")
+        if q == question:
             score = ratio(row["Answer"], a)
             status = "Correct"
             if score >= 0.9:
                 status = "Correct"
-                return row["Answer"], score, row["Question"], status
+                return row["Answer"], score, question, status
             elif score > max_score:
                 max_score = score
                 status = "Correct"
                 answer = row["Answer"]
-                prediction = row["Question"]
+                prediction = question
             break
         else:
             max_score = 0
