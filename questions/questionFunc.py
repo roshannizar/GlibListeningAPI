@@ -1,7 +1,6 @@
 from flask import jsonify
 import csv
 import nltk
-import os
 
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
@@ -44,8 +43,7 @@ def questionFunc(ww2):
             }
             questionArray.append(question)
 
-    path = os.getcwd()
-    with open(path+'\dataset\data.csv', mode="w") as dataset:
+    with open('data.csv', mode="w") as dataset:
         writer = csv.DictWriter(dataset, fieldnames=col_names)
         writer.writeheader()
         for sentence in questionArray:

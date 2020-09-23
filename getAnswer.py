@@ -34,8 +34,7 @@ def getResults(answerArray, fn):
 
 # Getting approximate answer using Levenshtein
 def answerPredictor(a, q):
-    path = os.getcwd()
-    data = pd.read_csv(path + '\dataset\data.csv')
+    data = pd.read_csv('data.csv')
     max_score = 0
     answer = ""
     prediction = ""
