@@ -18,7 +18,9 @@ def getResults(answerArray, fn):
         answer, score, prediction, status = fn(a, q)
         answerJson = {
             "score": "{0:.2f}".format(score),
-            "status": status
+            "status": status,
+            "question": prediction,
+            "answer": answer
         }
         answerScoreArray.append(answerJson)
         return [q, prediction, answer, "{0:.2f}".format(score), status]
