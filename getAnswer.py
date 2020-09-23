@@ -1,8 +1,7 @@
 import pandas as pd
 from Levenshtein import ratio
 from flask import jsonify
-
-data = pd.read_csv('data.csv')
+import os
 
 
 def getResults(answerArray, fn):
@@ -35,6 +34,8 @@ def getResults(answerArray, fn):
 
 # Getting approximate answer using Levenshtein
 def answerPredictor(a, q):
+    path = os.getcwd()
+    data = pd.read_csv(path + '\dataset\data.csv')
     max_score = 0
     answer = ""
     prediction = ""
