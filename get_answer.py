@@ -27,11 +27,11 @@ def get_results(answerArray, fn):
 
     pd.DataFrame(list(map(get_result, answerData, questionData)),
                  columns=["Answer", "Prediction", "Exact Answer", "Score", "Status"])
-    suggestionJson = {
-        "suggestion": list(dict.fromkeys(suggestion_array))
+    resultJson = {
+        "suggestion": list(dict.fromkeys(suggestion_array)),
+        "score": answerScoreArray
     }
-    answerScoreArray.append(suggestionJson)
-    response = jsonify(answerScoreArray)
+    response = jsonify(resultJson)
     response.status_code = 200
     return response
 
