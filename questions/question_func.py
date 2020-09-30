@@ -2,12 +2,13 @@ from flask import jsonify
 import csv
 import nltk
 
+from questions.remove_word import remove_word
+
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
-from questions.removeWord import removeWord
 
 
-def questionFunc(ww2):
+def question_func(ww2):
     col_names = ["Question", "Answer"]
     ww2b = nltk.sent_tokenize(ww2)
     sposs = {}
@@ -29,7 +30,7 @@ def questionFunc(ww2):
 
     for sentence in sposs.keys():
         poss = sposs[sentence]
-        (word, sentence, replaced) = removeWord(sentence, poss)
+        (word, sentence, replaced) = remove_word(sentence, poss)
         if replaced is None:
             print("Couldn't find any sentence")
             print(sentence)

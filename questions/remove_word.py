@@ -1,11 +1,11 @@
 import random
-from questions import replaceDash
+from questions import replace_dash
 
 
 # For a sentence create a blank space.
 # It first tries to randomly selection proper-noun
 # and if the proper noun is not found, it selects a noun randomly.
-def removeWord(sentence, poss):
+def remove_word(sentence, poss):
     words = None
     if 'NNP' in poss:
         words = poss['NNP']
@@ -15,7 +15,7 @@ def removeWord(sentence, poss):
         return None, sentence, None
     if len(words) > 0:
         word = random.choice(words)
-        replaced = replaceDash.replaceIC(word, sentence)
+        replaced = replace_dash.replace_ic(word, sentence)
         return word, sentence, replaced
     else:
         return None, sentence, None

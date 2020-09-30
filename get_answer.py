@@ -1,10 +1,13 @@
 import pandas as pd
 from Levenshtein import ratio
 from flask import jsonify
-import os
+
+from suggestions.suggestions import get_suggestions
+
+suggestion_array = []
 
 
-def getResults(answerArray, fn):
+def get_results(answerArray, fn):
     answerScoreArray = []
     answerData = []
     questionData = []
@@ -13,29 +16,32 @@ def getResults(answerArray, fn):
         answerData.append(answer["answer"])
         questionData.append(answer["question"])
 
-    def getResult(a, q):
+    def get_result(a, q):
         answer, score, prediction, status = fn(a, q)
         answerJson = {
             "score": "{0:.2f}".format(score),
-            "status": status
+            "status": status,
         }
         answerScoreArray.append(answerJson)
         return [q, prediction, answer, "{0:.2f}".format(score), status]
 
-    pd.DataFrame(list(map(getResult, answerData, questionData)),
+    pd.DataFrame(list(map(get_result, answerData, questionData)),
                  columns=["Answer", "Prediction", "Exact Answer", "Score", "Status"])
-
+    suggestionJson = {
+        "suggestion": list(dict.fromkeys(suggestion_array))
+    }
+    answerScoreArray.append(suggestionJson)
     response = jsonify(answerScoreArray)
     response.status_code = 200
     return response
 
 
 # Getting approximate answer using Levenshtein
-def answerPredictor(a, q):
+def answer_predictor(a, q):
     data = pd.read_csv('data.csv')
     max_score = 0
-    answer = ""
-    prediction = ""
+    answer = None
+    prediction = None
     status = "Correct"
     for idx, row in data.iterrows():
         question = row["Question"].strip(".")
@@ -44,11 +50,13 @@ def answerPredictor(a, q):
             status = "Correct"
             if score >= 0.9:
                 status = "Correct"
+                suggestion_array.append(get_suggestions(a, row["Answer"], score))
                 return row["Answer"], score, question, status
             elif score > max_score:
                 max_score = score
                 status = "Correct"
                 answer = row["Answer"]
+                suggestion_array.append(get_suggestions(a, row["Answer"], score))
                 prediction = question
             break
         else:
