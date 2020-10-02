@@ -11,6 +11,7 @@ def get_results(answerArray, fn):
     answerScoreArray = []
     answerData = []
     questionData = []
+    suggestionData = []
 
     for answer in answerArray["listening"]:
         answerData.append(answer["answer"])
@@ -27,10 +28,12 @@ def get_results(answerArray, fn):
 
     pd.DataFrame(list(map(get_result, answerData, questionData)),
                  columns=["Answer", "Prediction", "Exact Answer", "Score", "Status"])
+    suggestionData = suggestion_array
     resultJson = {
-        "suggestion": list(dict.fromkeys(suggestion_array)),
+        "suggestion": list(dict.fromkeys(suggestionData)),
         "score": answerScoreArray
     }
+    suggestion_array.clear()
     response = jsonify(resultJson)
     response.status_code = 200
     return response
