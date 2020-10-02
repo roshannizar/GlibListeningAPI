@@ -65,5 +65,6 @@ def answer_predictor(a, q):
 
     if max_score < 0.8:
         status = "Wrong"
+        suggestion_array.append(get_suggestions(a, answer, max_score))
         return answer, max_score, prediction, status
     return "Sorry, I didn't get you.", max_score, prediction, status
