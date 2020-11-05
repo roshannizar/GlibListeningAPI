@@ -2,6 +2,8 @@
 def get_suggestions(answer, dataSetAnswer, score):
     return evaluate_suggestion(answer, dataSetAnswer, score)
 
+# Evaluating suggestion, Sample version
+
 
 def evaluate_suggestion(answer, dataSetAnswer, score):
     if len(answer) != len(dataSetAnswer):

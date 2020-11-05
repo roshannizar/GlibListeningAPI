@@ -4,18 +4,19 @@ import nltk
 
 from questions.remove_word import remove_word
 
+# This was mainly used for hosting purpose.
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
 
 
-def question_func(ww2):
-    col_names = ["Question", "Answer"]
-    ww2b = nltk.sent_tokenize(ww2)
+def question_func(sentence):
+    col_names = ["Question", "Answer"] # For dataset headers csv
+    tSen = nltk.sent_tokenize(sentence)
     sposs = {}
-    questionArray = []
+    questionArray = [] # stores the extracted questions into array
     number = 0
 
-    for sentence in ww2b:
+    for sentence in tSen:
         # going to prepare the dictionary of parts-of-speech as the key and value is a list of words:
         # {part-of-speech: [word1, word2]}
         # basically grouping the words based on the parts-of-speech
@@ -31,10 +32,7 @@ def question_func(ww2):
     for sentence in sposs.keys():
         poss = sposs[sentence]
         (word, sentence, replaced) = remove_word(sentence, poss)
-        if replaced is None:
-            print("Couldn't find any sentence")
-            print(sentence)
-        else:
+        if replaced is not None:
             number = number + 1
             replaced = replaced.strip(".")
             question = {
@@ -44,6 +42,7 @@ def question_func(ww2):
             }
             questionArray.append(question)
 
+    # Storing the generated questions to the dataset
     with open('data.csv', mode="w") as dataset:
         writer = csv.DictWriter(dataset, fieldnames=col_names)
         writer.writeheader()

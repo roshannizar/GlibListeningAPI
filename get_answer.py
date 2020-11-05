@@ -6,6 +6,7 @@ from suggestions.suggestions import get_suggestions
 
 suggestion_array = []
 
+# result evalutation based on the answer
 
 def get_results(answerArray, fn):
     answerScoreArray = []
@@ -41,7 +42,7 @@ def get_results(answerArray, fn):
 
 # Getting approximate answer using Levenshtein
 def answer_predictor(a, q):
-    data = pd.read_csv('data.csv')
+    data = pd.read_csv('data.csv') #Read the answers
     max_score = 0
     answer = None
     prediction = None
