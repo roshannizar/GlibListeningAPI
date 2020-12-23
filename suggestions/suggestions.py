@@ -6,7 +6,7 @@ def get_suggestions(answer, dataSetAnswer, score):
 
 
 def evaluate_suggestion(answer, dataSetAnswer, score):
-    if len(answer) != len(dataSetAnswer):
+    if answer != dataSetAnswer:
         if score <= 0.8:
             return 'Need more concentration!'
         else:
