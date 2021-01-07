@@ -12,8 +12,6 @@ def get_results(answerArray, fn):
     answerScoreArray = []
     answerData = []
     questionData = []
-    suggestionData = []
-
     for answer in answerArray["listening"]:
         answerData.append(answer["answer"])
         questionData.append(answer["question"])
@@ -22,7 +20,7 @@ def get_results(answerArray, fn):
         answer, score, prediction, status = fn(a, q)
         answerJson = {
             "score": "{0:.2f}".format(score),
-            "status": status,
+            "status": status
         }
         answerScoreArray.append(answerJson)
         return [q, prediction, answer, "{0:.2f}".format(score), status]
@@ -30,9 +28,11 @@ def get_results(answerArray, fn):
     pd.DataFrame(list(map(get_result, answerData, questionData)),
                  columns=["Answer", "Prediction", "Exact Answer", "Score", "Status"])
     suggestionData = suggestion_array
+
     resultJson = {
         "suggestion": list(dict.fromkeys(suggestionData)),
-        "score": answerScoreArray
+        "score": answerScoreArray,
+        "xp": calculateXP(answerScoreArray)
     }
     suggestion_array.clear()
     response = jsonify(resultJson)
@@ -72,3 +72,14 @@ def answer_predictor(a, q):
         suggestion_array.append(get_suggestions(a, answer, max_score))
         return answer, max_score, prediction, status
     return "Sorry, I didn't get you.", max_score, prediction, status
+
+
+def calculateXP(score):
+    xp = 0
+    nCorrection = 0
+    for row in score:
+        xp = xp + (int(float(row['score']))*10)
+        if row['status'] == 'Correct':
+            nCorrection = nCorrection + 1
+            xp = xp + 100
+    return xp
