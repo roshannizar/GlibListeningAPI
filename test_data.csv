@@ -1,3 +1,51 @@
-Question,Answer
-
-
+Question,Answer,ExactAnswer,Score,Status
+__________________ wants mario to help next month,Susanne,Susanne,1.00,Correct
+Also she needs to visit the __________________ in germany,customer,customer,1.00,Correct
+Conversation was about the __________________ calls,meeting,meeting,1.00,Correct
+__________________ wants mario to help next month,Susanne,susanne,0.86,Correct
+Also she needs to visit the __________________ in germany,customer,custamer,0.82,Correct
+Conversation was about the __________________ calls,meeting,meeting,0.73,Wrong
+__________________ wants mario to help next month,Susanne,Susanne,0.77,Wrong
+Also she needs to visit the __________________ in germany,customer,Customer,0.82,Correct
+Conversation was about the __________________ calls,meeting,,0.00,Wrong
+__________________ wants mario to help next month,Susanne,Mario,0.17,Wrong
+Doctor __________________ it's nice to meet you,Miller,Miler,0.91,Correct
+His __________________ was in electronic engineering,doctorate,degree,0.40,Wrong
+Alessandro __________________ was the project leader for the Starlight programming project,Rossi,Rossi,1.00,Correct
+__________________ Tanaka had another name called Meg.The final person was learning about the research and development,Meguni,Meguny,0.83,Correct
+He joined the __________________ for next few months,team,group,0.00,Wrong
+Doctor __________________ it's nice to meet you,Miller,miler,0.81,Correct
+His __________________ was in electronic engineering,doctorate,doctorate,1.00,Correct
+Alessandro __________________ was the project leader for the Starlight programming project,Rossi,Rossi ,0.91,Correct
+__________________ Tanaka had another name called Meg.The final person was learning about the research and development,Meguni,Megunii,0.92,Correct
+He joined the __________________ for next few months,team,team,1.00,Correct
+__________________ Rossi was the project leader for the Starlight programming project,Alessandro,Alessandar,0.90,Correct
+Meguni __________________ had another name called Meg.The final person was learning about the research and development,Tanaka,tanaka,0.83,Correct
+Can i book a table for __________________ night,tomorrow,tomorrow,1.00,Correct
+They booked for eight __________________,thirty,thirteen,0.71,Wrong
+They were pretty busy and __________________ was free around half past seven or nine,booking,bookings,0.93,Correct
+__________________ booked for eight thirty for four people and later changed it to six people,Jamie,james,0.80,Correct
+She also changed the __________________ for eight near the kitchen,time,time,1.00,Correct
+Can i book a table for __________________ night,tomorrow,tomorrow,1.00,Correct
+They booked for eight __________________,thirty,thirty,1.00,Correct
+They were pretty busy and __________________ was free around half past seven or nine,booking,book,0.73,Wrong
+__________________ booked for eight thirty for four people and later changed it to six people,Jamie,jammy,0.60,Wrong
+She also changed the __________________ for eight near the kitchen,time,time,1.00,Correct
+Can i book a table for __________________ night,tomorrow,tomorrow,1.00,Correct
+They booked for eight __________________,thirty,Thirty,0.83,Correct
+They were pretty busy and __________________ was free around half past seven or nine,booking,book,0.73,Wrong
+__________________ booked for eight thirty for four people and later changed it to six people,Jamie,Jami,0.89,Correct
+She also changed the __________________ for eight near the kitchen,time,time,1.00,Correct
+"__________________ is not here at the moment, so please leave a message and i will call back",John,John,1.00,Correct
+This is Marina __________________ calling from old time toys,Silva,Sivwa,0.73,Wrong
+Your colleague __________________ gave me your phone number,Alex,Alex,1.00,Correct
+My __________________ number is 02086557621,phone,mobile,0.36,Wrong
+__________________ send an email of the new brochure and information about your prices,Please,try to,0.00,Wrong
+My __________________ address is marina.silver@oldtimes-toys.com,email,mail,0.89,Correct
+"__________________ is not here at the moment, so please leave a message and i will call back",John,John,1.00,Correct
+This is Marina __________________ calling from old time toys,Silva,Sivva,0.88,Correct
+Your colleague __________________ gave me your phone number,Alex,Alex,1.00,Correct
+My __________________ number is 02086557621,phone,telephone,0.71,Wrong
+__________________ send an email of the new brochure and information about your prices,Please,please,0.83,Correct
+My __________________ address is marina.silver@oldtimes-toys.com,email,mail,0.89,Correct
+My __________________ address is marina.silver@oldtimes-toys.com,email,gmail,0.00,Wrong
