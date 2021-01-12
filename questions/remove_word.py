@@ -11,6 +11,8 @@ def remove_word(sentence, poss):
         words = poss['NNP']
     elif 'NN' in poss:
         words = poss['NN']
+    elif 'NNS' in poss:
+        words = poss['NNS']
     else:
         return None, sentence, None
     if len(words) > 0:

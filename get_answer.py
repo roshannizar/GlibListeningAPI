@@ -76,10 +76,8 @@ def answer_predictor(a, q):
 
 def calculateXP(score):
     xp = 0
-    nCorrection = 0
     for row in score:
         xp = xp + (int(float(row['score']))*10)
         if row['status'] == 'Correct':
-            nCorrection = nCorrection + 1
             xp = xp + 100
     return xp

@@ -47,7 +47,7 @@ def question_func(sentence):
         writer = csv.DictWriter(dataset, fieldnames=col_names)
         writer.writeheader()
         for sentence in questionArray:
-            dataset_writer = csv.writer(dataset, delimiter=',', quoting=csv.QUOTE_NONE, lineterminator='\n')
+            dataset_writer = csv.writer(dataset, delimiter=',', quoting=csv.QUOTE_NONE, lineterminator='\n', escapechar='.')
             dataset_writer.writerow([sentence['question'], sentence['answer']])
     response = jsonify(questionArray)
     response.status_code = 200
